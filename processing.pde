@@ -147,7 +147,3 @@ void window(){
 
     oldWinColor = nowWinColor;
 }
-
-void smile(){
-
-}
