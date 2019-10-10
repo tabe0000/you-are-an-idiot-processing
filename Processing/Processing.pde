@@ -83,7 +83,19 @@ void title() {
 
 void window(){
     rectMode(CORNER);
+    
+    ChangeWindowwColor();
 
+    RefrectWindow();
+
+    CloseAndStatusBar();
+
+    DrawText();
+
+    DrawSmileFace();    
+}
+
+void ChangeWindowwColor() {
     //ウィンドウカラーをチェンジ
     if(winColor == WindowColor.WHITE){
         nowWinColor = 255;
@@ -96,7 +108,9 @@ void window(){
     strokeWeight(2);
     stroke(25);
     rect(winPosX, winPosY , winSizeX, winSizeY);
+}
 
+void RefrectWindow() {
     //ウィンドウの外に出た場合反射させる
     if(winPosX < 0 || winPosX + winSizeX > parentWinSizeX){
         winSpeedX *= -winDirX;
@@ -104,22 +118,25 @@ void window(){
     if(winPosY < 0 || winPosY + winSizeY> parentWinSizeY){
         winSpeedY *= -winDirY;
     }
+}
 
-
+void CloseAndStatusBar() {
     //閉じるボタンと上部ステータスバー
     translate(winPosX, winPosY);
     fill(245);
     rect(0, 0, winSizeX, 18);
     fill(#b80c09);
     rect(winSizeX-10, 2, 10, 10);
- 
+}
 
+void DrawText() {
     //テキスト表示
     fill(oldWinColor);
     textSize(30);
     text("You are an idiot", 80, 100);
-    
+}
 
+void DrawSmileFace() {
     //ニコニコマーク
     stroke(oldWinColor);
     ellipseMode(CENTER);
@@ -139,8 +156,9 @@ void window(){
         //輪郭
         ellipse(nicoPosX * i, winSizeY / 2 + 20, 50, 50);
     }
+}
 
-    
+void MoveWindow() {
     //ウィンドウを移動
     winPosX += winSpeedX;
     winPosY += winSpeedY;
